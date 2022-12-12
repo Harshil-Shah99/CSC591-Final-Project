@@ -2,7 +2,8 @@
 * [SRCNN](https://github.com/Harshil-Shah99/CSC591-Final-Project/blob/main/SRCNN.ipynb) contains all the python scripts to build a basic Super resolution model from scratch, train and evaluate the model with creating a onnx file. 
 * [model.onnx](https://github.com/Harshil-Shah99/CSC591-Final-Project/blob/main/model.onnx) is a the onnx file created from [SRCNN](https://github.com/Harshil-Shah99/CSC591-Final-Project/blob/main/SRCNN.ipynb) model. 
 
-To run the code, clone the git repository
+To run the code for the Real-ESRGAN, clone the git repository at https://github.com/xinntao/Real-ESRGAN
+
 Go to /Real-ESRGAN/realesrgan/
 Open the file 'utils.py'
 At line 75, paste the following code:
@@ -37,4 +38,12 @@ To test with speedup, you can add:
  	  pruner._unwrap_model()
         from nni.compression.pytorch.speedup import ModelSpeedup
         ModelSpeedup(self.model, torch.rand(1, 3, 28, 28).half().cuda(), masks).speedup_model()
+
+Finally, run the following in the terminal:
+```
+!python inference_realesrgan.py -n RealESRGAN_x4plus -i upload --outscale 3.5
+```
+Alternatively, you can use the .ipynb code file in this repository and run it either locally or on google colab.
+Here is our Google Colab Notebook:
+https://colab.research.google.com/drive/1IccOVepCpXX5IxKwfM18NsOwyQvTKvua?usp=sharing
 
